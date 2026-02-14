@@ -1,0 +1,343 @@
+ <!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine untuk Mayaaa 💕</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;family=Pacifico&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Quicksand', sans-serif; }
+    .pacifico { font-family: 'Pacifico', cursive; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    
+    @keyframes pulse-heart {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+    }
+    
+    @keyframes bounce-in {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+    
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    
+    .float { animation: float 3s ease-in-out infinite; }
+    .pulse-heart { animation: pulse-heart 1s ease-in-out infinite; }
+    .shake { animation: shake 0.5s ease-in-out; }
+    .bounce-in { animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+    .rainbow { animation: rainbow 3s linear infinite; }
+    .wiggle { animation: wiggle 1s ease-in-out infinite; }
+    
+    .confetti {
+      position: fixed;
+      font-size: 2rem;
+      animation: confetti-fall 3s linear forwards;
+      pointer-events: none;
+      z-index: 100;
+    }
+    
+    .heart-bg {
+      position: absolute;
+      opacity: 0.1;
+      font-size: 3rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .btn-cute {
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 6px 0 #c2185b;
+    }
+    
+    .btn-cute:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 0 #c2185b;
+    }
+    
+    .btn-cute:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #c2185b;
+    }
+    
+    .card-main {
+      background: linear-gradient(135deg, #fff0f3 0%, #ffe4ec 100%);
+      border: 4px dashed #f48fb1;
+    }
+    
+    .bubble {
+      position: absolute;
+      background: rgba(255, 182, 193, 0.3);
+      border-radius: 50%;
+      animation: float 5s ease-in-out infinite;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full overflow-auto" style="background: linear-gradient(180deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);"><!-- Floating Background Hearts -->
+   <div id="bg-hearts" class="fixed inset-0 overflow-hidden pointer-events-none"></div><!-- Bubbles -->
+   <div class="bubble" style="width: 60px; height: 60px; top: 10%; left: 5%;"></div>
+   <div class="bubble" style="width: 40px; height: 40px; top: 30%; right: 10%; animation-delay: 1s;"></div>
+   <div class="bubble" style="width: 80px; height: 80px; bottom: 20%; left: 15%; animation-delay: 2s;"></div>
+   <div class="bubble" style="width: 50px; height: 50px; bottom: 40%; right: 5%; animation-delay: 0.5s;"></div><!-- Main Content -->
+   <div class="relative z-10 min-h-full flex flex-col items-center justify-center p-4 py-8"><!-- Main Card -->
+    <div class="card-main rounded-3xl p-6 md:p-10 max-w-lg w-full text-center relative overflow-hidden"><!-- Decorative Corner Hearts -->
+     <div class="absolute top-2 left-2 text-3xl wiggle">
+      💕
+     </div>
+     <div class="absolute top-2 right-2 text-3xl wiggle" style="animation-delay: 0.5s;">
+      💕
+     </div>
+     <div class="absolute bottom-2 left-2 text-3xl wiggle" style="animation-delay: 0.3s;">
+      💕
+     </div>
+     <div class="absolute bottom-2 right-2 text-3xl wiggle" style="animation-delay: 0.8s;">
+      💕
+     </div><!-- Big Heart -->
+     <div class="text-7xl md:text-8xl pulse-heart mb-4">
+      💖
+     </div><!-- Title -->
+     <h1 id="main-title" class="pacifico text-3xl md:text-4xl text-pink-600 mb-2">Happy Valentine's Day!</h1><!-- Recipient Name -->
+     <h2 class="text-2xl md:text-3xl font-bold text-pink-500 mb-4"><span id="recipient-name" class="text-pink-600 rainbow">Mayaaa</span> 💝</h2><!-- Cute Divider -->
+     <div class="flex items-center justify-center gap-2 mb-4"><span class="text-2xl">🌸</span>
+      <div class="h-1 w-20 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-300 rounded-full"></div><span class="text-2xl">🌸</span>
+     </div><!-- Love Message -->
+     <p id="love-message" class="text-lg md:text-xl text-pink-700 leading-relaxed mb-6 px-4">Kamu adalah alasan kenapa aku tersenyum setiap hari! Terima kasih sudah menjadi bagian terindah dalam hidupku. Semoga hari Valentine ini membawa kebahagiaan untukmu! 🥰</p><!-- Cute Buttons Section -->
+     <div class="space-y-4"><!-- Hug Button --> <button id="hug-btn" class="btn-cute w-full bg-pink-400 hover:bg-pink-500 text-white font-bold py-4 px-6 rounded-2xl text-lg flex items-center justify-center gap-3"> <span class="text-2xl">🤗</span> <span>Kirim Pelukan Virtual!</span> <span class="text-2xl">🤗</span> </button> <!-- Love Button --> <button id="love-btn" class="btn-cute w-full bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded-2xl text-lg flex items-center justify-center gap-3"> <span class="text-2xl">💘</span> <span>Ledakkan Cinta!</span> <span class="text-2xl">💘</span> </button> <!-- Compliment Button --> <button id="compliment-btn" class="btn-cute w-full bg-purple-400 hover:bg-purple-500 text-white font-bold py-4 px-6 rounded-2xl text-lg flex items-center justify-center gap-3"> <span class="text-2xl">✨</span> <span>Pujian Random!</span> <span class="text-2xl">✨</span> </button>
+     </div><!-- Popup Messages Container -->
+     <div id="popup-container" class="mt-6 min-h-[80px]"></div>
+    </div><!-- Bottom Cute Elements -->
+    <div class="mt-6 flex items-center gap-4 text-4xl"><span class="float">🧸</span> <span class="float" style="animation-delay: 0.5s;">🍫</span> <span class="float" style="animation-delay: 1s;">🌹</span> <span class="float" style="animation-delay: 1.5s;">💌</span> <span class="float" style="animation-delay: 2s;">🎀</span>
+    </div><!-- Love Counter -->
+    <div class="mt-4 bg-white/80 backdrop-blur rounded-full px-6 py-3 shadow-lg">
+     <p class="text-pink-600 font-bold">💕 Cinta terkirim: <span id="love-counter" class="text-2xl text-red-500">0</span> kali! 💕</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "Happy Valentine's Day!",
+      recipient_name: "Mayaaa",
+      love_message: "Kamu adalah alasan kenapa aku tersenyum setiap hari! Terima kasih sudah menjadi bagian terindah dalam hidupku. Semoga hari Valentine ini membawa kebahagiaan untukmu! 🥰",
+      primary_color: "#f48fb1",
+      secondary_color: "#ffffff",
+      text_color: "#ad1457",
+      accent_color: "#e91e63",
+      button_color: "#f06292"
+    };
+
+    let loveCount = 0;
+    const compliments = [
+      "Kamu cantik banget hari ini! 😍",
+      "Senyummu bikin hari cerah! ☀️",
+      "Kamu adalah yang terbaik! 🏆",
+      "Matamu indah seperti bintang! ⭐",
+      "Kamu bikin dunia lebih indah! 🌈",
+      "Hatimu seindah wajahmu! 💖",
+      "Kamu luar biasa amazing! 🎉",
+      "Kebaikanmu menginspirasi! 🌟",
+      "Kamu adalah sunshine-ku! 🌻",
+      "Peluk virtual untukmu! 🤗"
+    ];
+
+    const hugMessages = [
+      "🤗 PELUKAN SUPER HANGAT TERKIRIM! 🤗",
+      "💕 Pelukan penuh cinta melayang ke kamu! 💕",
+      "🧸 Pelukan teddy bear raksasa! 🧸",
+      "🌸 Pelukan sehangat matahari pagi! 🌸",
+      "💝 Pelukan infinity untukmu! 💝"
+    ];
+
+    // Create floating background hearts
+    function createBgHearts() {
+      const container = document.getElementById('bg-hearts');
+      const hearts = ['💕', '💖', '💗', '💓', '💞', '💘', '❤️', '🩷'];
+      
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-bg';
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 4 + 's';
+        heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+        container.appendChild(heart);
+      }
+    }
+
+    // Create confetti effect
+    function createConfetti() {
+      const emojis = ['💖', '💕', '💗', '💓', '💞', '🌸', '✨', '💘', '🩷', '❤️'];
+      
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 50);
+      }
+    }
+
+    // Show popup message
+    function showPopup(message, color = '#e91e63') {
+      const container = document.getElementById('popup-container');
+      container.innerHTML = '';
+      
+      const popup = document.createElement('div');
+      popup.className = 'bounce-in bg-white rounded-2xl p-4 shadow-xl border-4';
+      popup.style.borderColor = color;
+      popup.innerHTML = `<p class="text-lg font-bold" style="color: ${color}">${message}</p>`;
+      
+      container.appendChild(popup);
+      
+      setTimeout(() => {
+        popup.style.transition = 'all 0.3s ease-out';
+        popup.style.opacity = '0';
+        popup.style.transform = 'scale(0.8)';
+      }, 3000);
+    }
+
+    // Update love counter
+    function updateLoveCounter() {
+      loveCount++;
+      const counter = document.getElementById('love-counter');
+      counter.textContent = loveCount;
+      counter.classList.add('bounce-in');
+      setTimeout(() => counter.classList.remove('bounce-in'), 600);
+    }
+
+    // Button event listeners
+    document.getElementById('hug-btn').addEventListener('click', function() {
+      this.classList.add('shake');
+      setTimeout(() => this.classList.remove('shake'), 500);
+      
+      const message = hugMessages[Math.floor(Math.random() * hugMessages.length)];
+      showPopup(message, '#ec407a');
+      updateLoveCounter();
+      createConfetti();
+    });
+
+    document.getElementById('love-btn').addEventListener('click', function() {
+      this.classList.add('shake');
+      setTimeout(() => this.classList.remove('shake'), 500);
+      
+      createConfetti();
+      showPopup('💥 BOOM! LEDAKAN CINTA! 💥', '#e91e63');
+      updateLoveCounter();
+    });
+
+    document.getElementById('compliment-btn').addEventListener('click', function() {
+      this.classList.add('shake');
+      setTimeout(() => this.classList.remove('shake'), 500);
+      
+      const compliment = compliments[Math.floor(Math.random() * compliments.length)];
+      showPopup(compliment, '#9c27b0');
+      updateLoveCounter();
+    });
+
+    // Element SDK integration
+    async function onConfigChange(config) {
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('recipient-name').textContent = config.recipient_name || defaultConfig.recipient_name;
+      document.getElementById('love-message').textContent = config.love_message || defaultConfig.love_message;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              window.elementSdk.setConfig({ button_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["recipient_name", config.recipient_name || defaultConfig.recipient_name],
+        ["love_message", config.love_message || defaultConfig.love_message]
+      ]);
+    }
+
+    // Initialize
+    createBgHearts();
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cd4ad90a20af4e4',t:'MTc3MDk4OTQwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
